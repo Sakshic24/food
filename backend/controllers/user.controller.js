@@ -1,13 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const User = require("../models/User");
-const { createUser } = require("../controllers/user.controller");
-
 //Better code writing practice
-// router.route("/createuser").post(createUser);
 
-//Sakshi Code
-router.post("/createuser", async (req, res) => {
+async function createUser(req, res) {
   try {
     const { name, password, email, location } = req.body;
     console.log(req.body);
@@ -23,5 +16,5 @@ router.post("/createuser", async (req, res) => {
     res.json({ success: false });
     console.log(error);
   }
-});
-module.exports = router;
+}
+module.exports = { createUser };
